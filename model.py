@@ -1,10 +1,11 @@
+import libraries
 from libraries import *
 
 class LRmodel: #Our model: Logistic Regression
     def __init__(self, random_state = 42):
         self.pr = preprocess() #Our preprocess class
         self.random_state_pos = random_state
-        self.data = pd.read_csv("data.csv", index_col=0) #We can create and data with sampleDataPreprocess() function below
+        self.data = libraries.data
 
         X = self.data.iloc[:, 0:self.data.iloc[0].__len__() - 1] #Seperating X
         y = self.data.loc[:, "tag"] #Seperating Y

@@ -1,5 +1,7 @@
+import pandas as pd
+
 from libraries import *
-from move import move
+import libraries
 
 class preprocess:
     def __init__(self):
@@ -54,3 +56,23 @@ class preprocess:
         table.index = [i for i in range(table.__len__())]
         table = table.sample(frac = 1).reset_index(drop=True) #Shuffle the data
         return table
+
+    def encodingBinary(self, y, targets):
+        new_y = []
+        for i in y:
+            newTarget = []
+            encodeValue = list(targets).index(str(i))
+            for j in range(targets.__len__()):
+                if j == encodeValue:
+                    newTarget.append(1)
+                else:
+                    newTarget.append(0)
+            new_y.append(newTarget)
+        return pd.DataFrame(new_y)
+
+    def flat(self, y = pd.DataFrame):
+        flatted = []
+        for i in range(y.iloc[:,0].__len__()):
+            for j in range(y.iloc[0, :].__len__()):
+                flatted.append(y.iloc[i, j])
+        return flatted
