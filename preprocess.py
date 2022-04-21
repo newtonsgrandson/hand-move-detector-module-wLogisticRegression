@@ -1,7 +1,5 @@
-import pandas as pd
-
 from libraries import *
-import libraries
+from move import move
 
 class preprocess:
     def __init__(self):

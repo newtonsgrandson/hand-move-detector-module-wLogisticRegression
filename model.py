@@ -39,7 +39,7 @@ def main():
 
     #If we want to calculate mae we should encode our target data
     encoder = LabelEncoder()
-    encoder.fit(["a", "b", "c"]) #target data
+    encoder.fit(["a", "b", "c", "d"]) #target data
     encodeTest_Y = encoder.transform(test_y)
     encodePredictions = encoder.transform(predictions)
 
