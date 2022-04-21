@@ -43,7 +43,6 @@ def main():
         img = detector.findHands(img)
         lmlist = detector.findPosition(img)
 
-
         if lmlist.__len__() != 0 and pr.measureDiag(lmlist) > 100:  # 100 value is for my camera. You can calculate this value with function above: measureDiag()
             handTrain.append(lmlist)
 

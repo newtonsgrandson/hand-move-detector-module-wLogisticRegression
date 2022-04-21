@@ -23,8 +23,8 @@ class scratchModel:
         Axis_XLength = y.shape[0]
         yTheta = self.hypothesis(X, theta)
         yEncode = np.array(self.yEncode)
-        print(yEncode  * np.log(yTheta))
-        return -(1/Axis_XLength) * np.sum(y*np.log(yTheta) + (1-y)*np.log(1 - yTheta))
+        print(yEncode * np.log(yTheta))
+        return -(1/Axis_XLength) * np.sum(y*np.log(yTheta) + (1 - y)*np.log(1 - yTheta))
 
     def gradient(self, theta, X = pd.DataFrame, y = pd.Series):
         Axis_XLength = X.shape[0]
@@ -32,7 +32,7 @@ class scratchModel:
         return (1/Axis_XLength) * np.dot(X.transpose, yTheta - y)
 
     def fit(self, theta, X = pd.DataFrame, y = pd.DataFrame):
-        opt_weigths = fmin_tnc(func=self.costFunction, x0= theta,
+        opt_weigths = fmin_tnc(func = self.costFunction, x0 = theta,
                                fprime = self.gradient, args = (X, self.pr.flat(y)))
         return opt_weigths[0]
 
